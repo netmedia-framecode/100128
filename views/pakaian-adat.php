@@ -44,7 +44,7 @@ require_once("../templates/views_top.php"); ?>
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <form action="" method="post">
+                      <form action="" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id_pakaian_adat" value="<?= $data['id_pakaian_adat'] ?>">
                         <input type="hidden" name="imageOld" value="<?= $data['image'] ?>">
                         <input type="hidden" name="judul_pakaian_adatOld" value="<?= $data['judul_pakaian_adat'] ?>">
