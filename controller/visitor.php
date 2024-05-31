@@ -106,3 +106,6 @@ $semua_dokumen = "(SELECT 'jamuan-tamu' as source, 'Jamuan Tamu' as title,'jamua
     ORDER BY id_pakaian_adat DESC)
     LIMIT $limit_all OFFSET $offset_all";
 $view_semua_dokumen = mysqli_query($conn, $semua_dokumen);
+
+$video = "SELECT * FROM video ORDER BY id_video DESC LIMIT 50";
+$view_video = mysqli_query($conn, $video);

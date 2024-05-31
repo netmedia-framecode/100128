@@ -31,6 +31,7 @@ require_once("templates/top.php");
       <div id="portfolio-grid" class="pgi-hover">
         <div class="tt-grid ttgr-layout-creative-2 ttgr-gap-4">
           <div class="tt-grid-items-wrap isotope-items-wrap">
+
             <div class="tt-grid-item isotope-item people">
               <div class="ttgr-item-inner">
                 <div class="portfolio-grid-item">
@@ -53,6 +54,7 @@ require_once("templates/top.php");
                 </div>
               </div>
             </div>
+
             <div class="tt-grid-item isotope-item creative">
               <div class="ttgr-item-inner">
                 <div class="portfolio-grid-item">
@@ -75,6 +77,36 @@ require_once("templates/top.php");
                 </div>
               </div>
             </div>
+
+            <div class="tt-grid-item isotope-item people">
+              <div class="ttgr-item-inner">
+                <div class="portfolio-grid-item">
+                  <a href="video" class="pgi-image-wrap" data-cursor="View<br>Project">
+                    <div class="pgi-image-holder">
+                      <div class="pgi-image-inner anim-zoomin">
+                        <figure class="pgi-video-wrap ttgr-height">
+                          <video class="pgi-video" loop muted preload="metadata" poster="assets/img/tua-adat.jpg">
+                            <source src="assets/vids/tua-adat.mp4" type="video/mp4">
+                            <source src="assets/vids/tua-adat.webm" type="video/webm">
+                          </video>
+                        </figure>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="pgi-caption">
+                    <div class="pgi-caption-inner">
+                      <h2 class="pgi-title">
+                        <a href="video">Video</a>
+                      </h2>
+                      <div class="pgi-categories-wrap">
+                        <div class="pgi-category">Tradisi Suku Dawan</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="tt-grid-item isotope-item nature">
               <div class="ttgr-item-inner">
                 <div class="portfolio-grid-item">
@@ -97,6 +129,7 @@ require_once("templates/top.php");
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

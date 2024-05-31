@@ -1160,6 +1160,98 @@ if (isset($_SESSION["project_dokumen_digital"]["users"])) {
     return mysqli_affected_rows($conn);
   }
 
+  function video($conn, $data, $action, $deskripsi)
+  {
+    $path = "../assets/img/thumbnail/";
+
+    if ($action == "insert") {
+      $fileName = basename($_FILES["thumbnail"]["name"]);
+      $fileName = str_replace(" ", "-", $fileName);
+      $fileName_encrypt = crc32($fileName);
+      $ekstensiGambar = explode('.', $fileName);
+      $ekstensiGambar = strtolower(end($ekstensiGambar));
+      $imageUploadPath = $path . $fileName_encrypt . "." . $ekstensiGambar;
+      $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+      $allowTypes = array('jpg', 'png', 'jpeg');
+      if (in_array($fileType, $allowTypes)) {
+        $imageTemp = $_FILES["thumbnail"]["tmp_name"];
+        compressImage($imageTemp, $imageUploadPath, 75);
+        $thumbnail = $fileName_encrypt . "." . $ekstensiGambar;
+      } else {
+        $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diizinkan.";
+        $message_type = "danger";
+        alert($message, $message_type);
+        return false;
+      }
+      $link_video = $data['link_video'];
+      if (strpos($link_video, 'watch?v=') !== false) {
+        $video_id = substr($link_video, strpos($link_video, 'watch?v=') + 8);
+        $new_link_video = "https://www.youtube.com/embed/$video_id";
+      } elseif (strpos($link_video, 'embed/') !== false) {
+        $new_link_video = $link_video;
+      } else {
+        $new_link_video = "";
+      }
+      $sql = "INSERT INTO video(id_tipe_fitur,thumbnail,link_video,nama_video,deskripsi,author) VALUES('$data[id_tipe_fitur]','$thumbnail','$new_link_video','$data[nama_video]','$deskripsi','$data[author]')";
+    }
+
+    if ($action == "update") {
+      if (!empty($_FILES['thumbnail']["name"])) {
+        $fileName = basename($_FILES["thumbnail"]["name"]);
+        $fileName = str_replace(" ", "-", $fileName);
+        $fileName_encrypt = crc32($fileName);
+        $ekstensiGambar = explode('.', $fileName);
+        $ekstensiGambar = strtolower(end($ekstensiGambar));
+        $imageUploadPath = $path . $fileName_encrypt . "." . $ekstensiGambar;
+        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg', 'png', 'jpeg');
+        if (in_array($fileType, $allowTypes)) {
+          $imageTemp = $_FILES["thumbnail"]["tmp_name"];
+          compressImage($imageTemp, $imageUploadPath, 75);
+          $thumbnail = $fileName_encrypt . "." . $ekstensiGambar;
+          $remove_image = str_replace($path, "", $data['thumbnailOld']);
+          if ($remove_image != "default.svg") {
+            unlink($path . $remove_image);
+          }
+        } else {
+          $message = "Maaf, hanya file gambar JPG, JPEG, dan PNG yang diizinkan.";
+          $message_type = "danger";
+          alert($message, $message_type);
+          return false;
+        }
+      } else if (empty($_FILES['thumbnail']["name"])) {
+        $thumbnail = $data['thumbnailOld'];
+      }
+      $link_video = $data['link_video'];
+      if (strpos($link_video, 'watch?v=') !== false) {
+        $video_id = substr($link_video, strpos($link_video, 'watch?v=') + 8);
+        $new_link_video = "https://www.youtube.com/embed/$video_id";
+      } elseif (strpos($link_video, 'embed/') !== false) {
+        $new_link_video = $link_video;
+      } else {
+        $new_link_video = "";
+      }
+      $id_tipe_fitur = $data['id_tipe_fitur'];
+      if ($id_tipe_fitur == 1) {
+        $id_fitur = $data['id_jamuan_tamu'];
+      } else if ($id_tipe_fitur == 2) {
+        $id_fitur = $data['id_pakaian_adat'];
+      }
+      if ($id_tipe_fitur == 3) {
+        $id_fitur = $data['id_perkawinan'];
+      }
+      $sql = "UPDATE video SET id_tipe_fitur='$id_tipe_fitur', thumbnail='$thumbnail', link_video='$new_link_video', nama_video='$data[nama_video]', deskripsi='$deskripsi' WHERE id_video='$data[id_video]'";
+    }
+
+    if ($action == "delete") {
+      unlink($path . $data['thumbnail']);
+      $sql = "DELETE FROM video WHERE id_video='$data[id_video]'";
+    }
+
+    mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
+  }
+
   function __name($conn, $data, $action)
   {
     if ($action == "insert") {
