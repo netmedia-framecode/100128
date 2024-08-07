@@ -21,7 +21,7 @@ if ($lentext > $num_char) {
 $deskripsi = substr($text, 0, $num_char) . '...';
 } else if ($lentext <= $num_char) { $deskripsi=substr($text, 0, $num_char); } require_once("templates/top.php"); ?>
 
-<section class="section normalhead lb">
+  <section class="section normalhead lb">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
@@ -49,7 +49,9 @@ $deskripsi = substr($text, 0, $num_char) . '...';
                 </ul>
               </div><!-- end meta -->
               <h3 class="post-title"><?= $data['judul_pakaian_adat']?></h3>
-              <?= $data['deskripsi']?>
+              <div class="text-dark" style="color: #000;font-weight: 500;">
+                <?= $data['deskripsi']?>
+              </div>
             </div><!-- end blog-desc -->
           </div><!-- end blogbox -->
         </div><!-- end content -->

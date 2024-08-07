@@ -29,14 +29,16 @@ require_once("templates/top.php");
           <div class="blog-desc col-md-8">
             <h3><a href="pakaian-adat-detail?post_id=<?= $data['id_pakaian_adat'] ?>"
                 title=""><?= $data['judul_pakaian_adat'] ?></a></h3>
-            <?php $num_char = 250;
+            <div class="text-dark" style="color: #000;font-weight: 500;">
+              <?php $num_char = 250;
                     $text = trim($data['deskripsi']);
                     $text = preg_replace('#</?strong.*?>#is', '', $text);
-            $lentext = strlen($text);
-            if ($lentext > $num_char) {
-            echo substr($text, 0, $num_char) . '...';
-            } else if ($lentext <= $num_char) { echo substr($text, 0, $num_char); } ?>
-              <a class="readmore" href="pakaian-adat-detail?post_id=<?= $data['id_pakaian_adat'] ?>">Baca Lebih</a>
+              $lentext = strlen($text);
+              if ($lentext > $num_char) {
+              echo substr($text, 0, $num_char) . '...';
+              } else if ($lentext <= $num_char) { echo substr($text, 0, $num_char); } ?>
+            </div>
+            <a class="readmore" href="pakaian-adat-detail?post_id=<?= $data['id_pakaian_adat'] ?>">Baca Lebih</a>
           </div><!-- end blog-desc -->
         </div><!-- end blogbox -->
         <?php } ?>
@@ -46,4 +48,4 @@ require_once("templates/top.php");
   </div><!-- end container -->
 </section><!-- end section -->
 
-  <?php require_once("templates/bottom.php"); ?>
+<?php require_once("templates/bottom.php"); ?>

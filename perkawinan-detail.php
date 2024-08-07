@@ -49,7 +49,9 @@ $deskripsi = substr($text, 0, $num_char) . '...';
                 </ul>
               </div><!-- end meta -->
               <h3 class="post-title"><?= $data['judul_perkawinan']?></h3>
-              <?= $data['deskripsi']?>
+              <div class="text-dark" style="color: #000;font-weight: 500;">
+                <?= $data['deskripsi']?>
+              </div>
             </div><!-- end blog-desc -->
           </div><!-- end blogbox -->
         </div><!-- end content -->

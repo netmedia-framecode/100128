@@ -27,6 +27,7 @@ require_once("templates/top.php");
           </div><!-- end media-box -->
           <div class="blog-desc col-md-8">
             <h3><a href="jamuan-tamu-detail?post_id=<?= $data['id_jamuan_tamu'] ?>" title=""><?= $data['judul_jamuan'] ?></a></h3>
+            <div class="text-dark" style="color: #000;font-weight: 500;">
             <?php $num_char = 250;
                     $text = trim($data['deskripsi']);
                     $text = preg_replace('#</?strong.*?>#is', '', $text);
@@ -34,6 +35,7 @@ require_once("templates/top.php");
                 if ($lentext > $num_char) {
                 echo substr($text, 0, $num_char) . '...';
                 } else if ($lentext <= $num_char) { echo substr($text, 0, $num_char); } ?>
+            </div>
             <a class="readmore" href="jamuan-tamu-detail?post_id=<?= $data['id_jamuan_tamu'] ?>">Baca Lebih</a>
           </div><!-- end blog-desc -->
         </div><!-- end blogbox -->

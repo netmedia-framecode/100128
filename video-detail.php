@@ -54,11 +54,15 @@ if (!isset($_GET['post'])) {
                       echo "Perkawinan";
                     }  ?></a></li>
                 <li><a href="#"><i class="fa fa-eye"></i> <?= $data['penonton'] ?></a></li>
-                <li><p>Author : <?= $data['author']?></p></li>
+                <li>
+                  <p>Author : <?= $data['author']?></p>
+                </li>
               </ul>
             </div><!-- end meta -->
             <h3 class="post-title"><?= $data['nama_video']?></h3>
-            <?= $data['deskripsi']?>
+            <div class="text-dark" style="color: #000;font-weight: 500;">
+              <?= $data['deskripsi']?>
+            </div>
           </div><!-- end blog-desc -->
         </div><!-- end blogbox -->
       </div><!-- end content -->
@@ -66,5 +70,5 @@ if (!isset($_GET['post'])) {
   </div><!-- end container -->
 </section><!-- end section -->
 
-  <?php }
+<?php }
 require_once("templates/bottom.php"); ?>

@@ -27,24 +27,25 @@ require_once("templates/top.php");
                 style="width: 100%;height: 200px; object-fit: cover;" alt="" class="img-responsive img-thumbnail"></a>
           </div><!-- end media-box -->
           <div class="blog-desc col-md-8">
-            <h3><a href="video-detail?post=<?= $data['id_video'] ?>"
-                title=""><?= $data['nama_video'] ?></a></h3>
-            <?php $num_char = 250;
+            <h3><a href="video-detail?post=<?= $data['id_video'] ?>" title=""><?= $data['nama_video'] ?></a></h3>
+            <div class="text-dark" style="color: #000;font-weight: 500;">
+              <?php $num_char = 250;
                     $text = trim($data['deskripsi']);
                     $text = preg_replace('#</?strong.*?>#is', '', $text);
-            $lentext = strlen($text);
-            if ($lentext > $num_char) {
-            echo substr($text, 0, $num_char) . '...';
-            } else if ($lentext <= $num_char) { echo substr($text, 0, $num_char); } ?>
-              <a class="readmore" href="video-detail?post=<?= $data['id_video'] ?>">Lihat</a>
+              $lentext = strlen($text);
+              if ($lentext > $num_char) {
+              echo substr($text, 0, $num_char) . '...';
+              } else if ($lentext <= $num_char) { echo substr($text, 0, $num_char); } ?>
+            </div>
+            <a class="readmore" href="video-detail?post=<?= $data['id_video'] ?>">Lihat</a>
           </div><!-- end blog-desc -->
         </div><!-- end blogbox -->
         <?php } ?>
-        
+
 
       </div><!-- end content -->
     </div><!-- end row -->
   </div><!-- end container -->
 </section><!-- end section -->
 
-  <?php require_once("templates/bottom.php"); ?>
+<?php require_once("templates/bottom.php"); ?>
